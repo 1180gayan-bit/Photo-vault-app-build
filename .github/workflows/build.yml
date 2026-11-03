@@ -25,3 +25,12 @@ jobs:
             -sdk iphonesimulator \
             -destination 'generic/platform=iOS Simulator' \
             CODE_SIGNING_ALLOWED=NO
+
+  check-files:
+    name: Check project files
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Asset catalog JSON is valid
+        run: find Hideout/Assets.xcassets -name Contents.json -print0 | xargs -0 -n1 python3 -m json.tool > /dev/null
