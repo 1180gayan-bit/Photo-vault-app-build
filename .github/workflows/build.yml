@@ -9,7 +9,8 @@ on:
 jobs:
   build:
     name: Build for iOS Simulator
-    runs-on: macos-15
+    runs-on: macos-latest
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
 
